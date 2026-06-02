@@ -316,6 +316,96 @@
   .day2 .highlight-tag { background: rgba(254,91,4,0.15); color: #FFC885; }
   .day3 .highlight-tag { background: rgba(5,138,249,0.15); color: #3DCDF9; }
 
+  /* Expand toggle */
+  .expand-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Rethink Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0;
+    transition: opacity 0.2s;
+  }
+  .expand-btn:hover { opacity: 0.75; }
+  .day1 .expand-btn { color: #AAE4F4; }
+  .day2 .expand-btn { color: #FFC885; }
+  .day3 .expand-btn { color: #3DCDF9; }
+
+  .expand-arrow { transition: transform 0.3s ease; display: inline-block; }
+  .expand-btn.open .expand-arrow { transform: rotate(180deg); }
+
+  /* Expanded panel */
+  .expand-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+  }
+  .expand-panel.open {
+    max-height: 1000px;
+    opacity: 1;
+  }
+  .expand-inner {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .expand-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    margin-top: 16px;
+  }
+  .expand-section-title:first-child { margin-top: 0; }
+  .day1 .expand-section-title { color: #AAE4F4; }
+  .day2 .expand-section-title { color: #FFC885; }
+  .day3 .expand-section-title { color: #3DCDF9; }
+
+  .expand-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .expand-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .expand-list li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+  }
+  .expand-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    font-size: 11px;
+    opacity: 0.5;
+  }
+  .expand-sub-heading {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 14px 0 8px;
+  }
+
   /* Footer */
   .footer {
     margin: 44px 52px 44px;
@@ -464,6 +554,26 @@
           <span class="highlight-tag">Cross-border Collaboration</span>
           <span class="highlight-tag">Networking Dinner</span>
         </div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false">
+          View details <span class="expand-arrow">↓</span>
+        </button>
+        <div class="expand-panel">
+          <div class="expand-inner">
+            <p class="expand-desc">A dedicated members-only session bringing together founders, leaders and representatives from across SAMA markets.</p>
+            <div class="expand-section-title">What to Expect</div>
+            <ul class="expand-list">
+              <li>Welcome address and regional updates from SAMA leadership</li>
+              <li>Country chapter updates from Malaysia, Singapore, Indonesia, Thailand, Vietnam, Hong Kong and Philippines</li>
+              <li>Review of SAMA's progress, opportunities and growth across the region</li>
+              <li>Updates on regional initiatives, partnerships and upcoming activities</li>
+              <li>Member feedback and discussion session</li>
+              <li>Cross-border business opportunity sharing</li>
+              <li>Networking dinner with fellow members</li>
+            </ul>
+            <div class="expand-section-title" style="margin-top:16px;">Purpose</div>
+            <p class="expand-desc">To strengthen relationships between members, align on regional priorities, share market developments and identify collaboration opportunities across countries.</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -486,6 +596,33 @@
           <span class="highlight-tag">Media Press Conference</span>
           <span class="highlight-tag">Celebration Dinner</span>
         </div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false">
+          View details <span class="expand-arrow">↓</span>
+        </button>
+        <div class="expand-panel">
+          <div class="expand-inner">
+            <div class="expand-sub-heading">Morning Session · 10:00 AM – 1:00 PM</div>
+            <p class="expand-desc">The official launch of SAMA Philippines, marking the expansion of the alliance into one of Southeast Asia's most dynamic marketing markets.</p>
+            <div class="expand-section-title">What to Expect</div>
+            <ul class="expand-list">
+              <li>Official launch ceremony</li>
+              <li>Introduction to SAMA and its regional vision</li>
+              <li>Keynote and founder sharing sessions</li>
+              <li>Philippines chapter introduction and founding members showcase</li>
+              <li>Panel discussions on regional collaboration and market opportunities</li>
+              <li>Press conference and media engagement</li>
+              <li>Networking session with agencies, brands, partners and invited guests</li>
+            </ul>
+            <div class="expand-section-title" style="margin-top:16px;">Purpose</div>
+            <p class="expand-desc">To officially introduce SAMA Philippines to the local market while highlighting opportunities for brands, agencies and partners to collaborate across Asia through SAMA's regional network.</p>
+            <div class="expand-sub-heading" style="margin-top:14px;">Evening Session · 5:00 PM onwards</div>
+            <ul class="expand-list">
+              <li>Celebration Dinner</li>
+              <li>Networking Session</li>
+              <li>Informal Founder &amp; Partner Meet-up</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -507,6 +644,33 @@
           <span class="highlight-tag">Panel Discussions</span>
           <span class="highlight-tag">Regional Growth Topics</span>
           <span class="highlight-tag">Networking Lunch</span>
+        </div>
+        <button class="expand-btn" onclick="toggleExpand(this)" aria-expanded="false">
+          View details <span class="expand-arrow">↓</span>
+        </button>
+        <div class="expand-panel">
+          <div class="expand-inner">
+            <p class="expand-desc">FLAME is SAMA's regional industry forum bringing together agency leaders, marketers, business decision makers and ecosystem partners to discuss the future of marketing, creativity and growth across Asia.</p>
+            <div class="expand-section-title">What to Expect</div>
+            <ul class="expand-list">
+              <li>Founder and leadership discussions</li>
+              <li>Industry keynote presentations</li>
+              <li>Panel sessions featuring agency and brand leaders</li>
+              <li>Regional business growth and market expansion conversations</li>
+              <li>Cross-border marketing case studies and experiences</li>
+              <li>Networking opportunities with agencies, brands and partners</li>
+              <li>Sponsor showcases and partner activations</li>
+            </ul>
+            <div class="expand-section-title" style="margin-top:16px;">Key Themes</div>
+            <ul class="expand-list">
+              <li>Where Asia Leads</li>
+              <li>The Independent Advantage</li>
+              <li>Scaling Beyond Borders</li>
+              <li>Collaboration in Motion</li>
+            </ul>
+            <div class="expand-section-title" style="margin-top:16px;">Purpose</div>
+            <p class="expand-desc">To create meaningful conversations, partnerships and business opportunities that help agencies and brands grow beyond their home markets and navigate Asia's evolving marketing landscape.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -532,5 +696,15 @@
   </div>
 
 </div>
+<script>
+function toggleExpand(btn) {
+  const panel = btn.nextElementSibling;
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', !isOpen);
+  btn.childNodes[0].textContent = isOpen ? ' View details ' : ' Hide details ';
+}
+</script>
 </body>
 </html>
